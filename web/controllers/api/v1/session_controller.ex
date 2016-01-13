@@ -17,7 +17,7 @@ defmodule SamplePhoenixReactApp.Api.V1.SessionController do
     user = Repo.one(UserQuery.by_email(params["user"]["email"] || ""))
 
     if user do
-      changeset = UserAuth.login_changeset(user, params["user"])
+      changeset = UserAuth.login_changeset(user) # Validating a user changeset 
       if changeset.valid? do
         #conn
         #|> Guardian.Plug.sign_in(user, :token, perms: %{ default: Guardian.Permissions.max })
